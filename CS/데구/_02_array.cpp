@@ -35,6 +35,25 @@ list의 기능들
 /**
  * 리스트 구조체(list struct)
  * 여러 자료형들의 집합을 구조체(structure)라 한다.
+ * 
+ * struct allocate {            -> 구조체 이름 작성
+ * char name[10];
+ * int a;
+ * string b;
+ * } all;                       -> 구조체 별명 작성
+*/
+
+/*
+구조체 연산자
+1, dot 연산자
+    all.name = "ann";
+    all.a = 24;
+    all.b = "console"       -> 구조체의 데이터 항목을 지정
+2, arrow 연산자
+    struct allocate *sptr = &all;       -> 포인터 지정
+    sptr -> name = "ann";
+    sptr -> a = 24;
+    sptr -> b = "console";         -> 구조체의 포인터에서 포인터가 가르키는 항목을 지정
 */
 
 /*

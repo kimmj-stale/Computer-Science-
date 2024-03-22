@@ -1,7 +1,6 @@
 # Computer-Science-
 
-### 전공 CS지식을 정리한 파일들이 올라갈 예정입니다.
-### 잡동사니라 뭐가 올라갈 지 모름
+### 전공 CS
 
 ### 
   ![c](https://img.shields.io/badge/C-A8B9CC.svg?&style=for-the-badge&logo=c&logoColor=white)

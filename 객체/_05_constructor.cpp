@@ -131,3 +131,47 @@ int main() {
     }
 }
 */
+
+/*예제 4
+#include <iostream>
+using namespace std;
+class Rectangle
+{
+public:
+    int a , b;
+    Rectangle();
+    Rectangle(int x , int y);
+    Rectangle(int z);
+    bool isSquare();
+};
+
+Rectangle::Rectangle()
+{
+    a = b = 1;
+}
+Rectangle :: Rectangle(int x , int y) {
+    x = a;
+    y = b;
+}
+Rectangle :: Rectangle(int z) {
+    a = z;
+    b = z;
+}
+bool Rectangle :: isSquare() {
+    if (a == b) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+int main() {
+    Rectangle rect1;
+    Rectangle rect2(3 , 5);
+    Rectangle rect3(3);
+
+    if (rect1.isSquare()) cout << "rect1은 정사각형입니다." << '\n';
+    if (rect2.isSquare()) cout << "rect2은 정사각형입니다." << '\n';
+    if (rect3.isSquare()) cout << "rect3은 정사각형입니다." << '\n';
+}
+*/

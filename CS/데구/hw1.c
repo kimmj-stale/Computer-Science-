@@ -185,16 +185,15 @@ int main() {
 	// 여기에 코드를 입력하세요
 	FILE *pstudent = fopen("student.txt" , "r");
 	FILE *pgpa = fopen("gpa.txt" , "r");
-	p -> link = L -> head;
 
 	while (!feof(pstudent) && !feof(pgpa)) {
-        listData data;
-        fscanf(pstudent, "%d %s %s %s", &data.id, data.name, data.phone, data.province);
-        fscanf(pgpa, "%f", &data.gpa);
-        insertLast(L, data);
-    }
+		listData data;
+		fscanf(pstudent, "%s %d %s %s", data.name , &(data.id), data.phone, data.province);
+		fscanf(pgpa, "%f", &data.gpa);
+		insertLast(L, data);
+	}
 	fclose(pstudent);
-    fclose(pgpa);
+	fclose(pgpa);
 
 	//pstudent의 내용을 ListData struct에 넣기
 	while (1) {
@@ -283,4 +282,4 @@ int main() {
 				break;
 			}
 		}
-	}	
+	}		

@@ -12,4 +12,4 @@
 ### 
   ![visual studio code](https://img.shields.io/badge/visual%20studio%20code-007ACC.svg?&style=for-the-badge&logo=visualstudiocode&logoColor=white)
   ![intellij idea](https://img.shields.io/badge/intellij%20idea-000000.svg?&style=for-the-badge&logo=intellijidea&logoColor=white)
-  ![intellij idea](https://img.shields.io/badge/visual%20struid-000000.svg?&style=for-the-badge&logo=visualstudio&logoColor=white)
+  ![intellij idea](https://img.shields.io/badge/visual%20struid-005400.svg?&style=for-the-badge&logo=visualstudio&logoColor=white)

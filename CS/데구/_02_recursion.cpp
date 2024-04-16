@@ -57,3 +57,27 @@ int main() {
 
 */
 
+/*
+// 이진 탐색 알고리즘
+int BSearchRecursive(int arr[], int first, int last, int target)
+{
+    int mid;
+    if(first > last)
+        return -1;
+
+    mid = (first + last) / 2;
+
+    if(arr[mid] == target) {        //  찾는 target이 mid 위치에 있다면 mid return
+        return mid;
+    }
+
+    else if(arr[mid] > target) {    //  찾는 target이 mid의 값보다 작다면 mid의 우측 범위를 배제
+        return BSearchRecursive(arr, first, mid-1, target);
+    }
+
+    else {                          //  찾는 target이 mid의 값보다 크다면 mid의 좌측 범위를 배제
+        return BSearchRecursive(arr, mid+1, last, target);
+    }
+}
+*/
+

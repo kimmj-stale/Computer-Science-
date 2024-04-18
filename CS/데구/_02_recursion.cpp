@@ -58,7 +58,7 @@ int main() {
 */
 
 /*
-// 이진 탐색 알고리즘
+// 이진 탐색 알고리즘 !!재귀 함수로 구현!!
 int BSearchRecursive(int arr[], int first, int last, int target)
 {
     int mid;
@@ -81,3 +81,23 @@ int BSearchRecursive(int arr[], int first, int last, int target)
 }
 */
 
+/*
+// 이진 탐색 트리 !! 반복문으로 구현 !!
+int BSearchRecursive(int arr[], int first, int last, int target) {
+    int low = first;
+    int high = last;
+    int mid = (low + high) / 2;
+
+    while (low < high) {
+        if (arr[mid] < target) {
+            low = mid + 1;
+        }
+        else if (arr[mid] > target) {
+            high = mid - 1;
+        }
+        else {
+            return mid;
+        }
+    }
+}
+*/

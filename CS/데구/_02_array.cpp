@@ -107,7 +107,7 @@ void insert(ArrayListType *L, int pos, element item){
 element delete(ArrayListType *L, int pos){
     int i;
     element item;
-    if( isEmpty(L) )
+    if(isEmpty(L))
         error(“List is Empty!”)
     else if( (pos < 0) || (pos >= L->length) )
         error(“Index Error”)

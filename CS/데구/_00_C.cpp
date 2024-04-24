@@ -5,12 +5,11 @@
 */
 /*
 #include "stdio.h"
-
 int (function_name)(int a , string b , ....) {
-                                             -> 별도 수행을 위한 추가 함수
+       ///                                      -> 별도 수행을 위한 추가 함수
 }
 int main(void) {
-                                             - > 프로그램 수행을 위한 main 함수
+       ///                                     - > 프로그램 수행을 위한 main 함수
 }
 */
 

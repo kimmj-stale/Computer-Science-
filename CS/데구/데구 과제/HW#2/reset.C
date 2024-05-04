@@ -71,7 +71,6 @@ void read_maze_from_file(const char* filename) {
 
 // 이동한 좌표를 저장할 배열
 element moved_path[MAX_STACK_SIZE];
-
 void print_moved_path(StackType* s) {
     printf("이동한 경로 좌표:\n");
     for (int i = 0; i <= s->top; i++) {
@@ -79,6 +78,7 @@ void print_moved_path(StackType* s) {
         // 이동한 좌표를 배열에 저장
         moved_path[i] = s->data[i];
     }
+    printf("\n");
 }
 
 // 상, 하, 좌, 우 이동 방향
@@ -138,45 +138,49 @@ int path(element start, element goal) {
     return 0;
 }
 
+int check_element(element tmp) {
+    if (maze[tmp.row][tmp.column] == 0 || maze[tmp.row][tmp.column] == 2) return 1;
+    else return 0;
+}
 
 int main() {
-    int starty, startx, endy, endx, res;
-
+    int starty, startx, endy, endx;
     printf("출발점(sy,sx)과 목표 지점(dy,dx)을 입력하세요 (종료: Ctrl+D): ");
-    while ((res = scanf("%d %d %d %d", &starty, &startx, &endy, &endx)) != EOF) {
-        if (res != 4) {
-            printf("잘못된 입력입니다. 다시 입력하세요.\n");
-            // 입력 버퍼 비우기
-            while (getchar() != '\n');
-            continue;
-        }
-
+    while (scanf("%d %d %d %d", &starty, &startx, &endy, &endx) == 4) {
         element start = { starty, startx };
         element goal = { endy, endx };
 
         // 파일에서 미로 읽기
         read_maze_from_file("maze_data.txt");
 
-        int result = path(start, goal);
-        if (result == 1) {
-            printf("목표 지점에 도착했습니다!\n");
-            printf("백트래킹 횟수: %d\n", backtrack_count);
-            printf("경로까지의 길이: %d\n", path_length + 1);
-        }
-        else if (result == 2) {
-            printf("경로까지 도달할 수 있는 경우가 없습니다.\n");
-            printf("백트래킹 횟수: %d\n", backtrack_count);
-            printf("경로까지의 길이: %d\n", path_length + 1);
+        int start_point = check_element(start);
+        int end_point = check_element(goal);
+        if (start_point == 0 || end_point == 0 || end_point == 2) {
+            printf("입력 오류: 출발점이나 목표점이 막힌 셀입니다."); 
         }
         else {
-            printf("장애물 발견으로 중단되었습니다.\n");
-            printf("백트래킹 횟수: %d\n", backtrack_count);
-            printf("경로까지의 길이: %d\n", path_length + 1);
+            int result = path(start, goal);
+            if (result == 1) {
+                printf("목표 지점에 도착했습니다!\n");
+                printf("백트래킹 횟수: %d\n", backtrack_count);
+                printf("경로까지의 길이: %d\n", path_length + 1);
+            }
+            else if (result == 2) {
+                printf("경로까지 도달할 수 있는 경우가 없습니다.\n");
+                printf("백트래킹 횟수: %d\n", backtrack_count);
+                printf("경로까지의 길이: %d\n", path_length + 1);
+            }
+            else {
+                printf("장애물 발견으로 중단되었습니다.\n");
+                printf("백트래킹 횟수: %d\n", backtrack_count);
+                printf("경로까지의 길이: %d\n", path_length + 1);
+            }
         }
-
-        printf("\n출발점(sy,sx)과 도착점(dy,dx)을 입력하세요 (종료: Ctrl+D): ");
+        printf("\n출발점(sy,sx)과 목표 지점(dy,dx)을 입력하세요 (종료: Ctrl+D): ");
         backtrack_count = 0;
         path_length = 0;
     }
+
+    printf("프로그램을 종료합니다.\n");
     return 0;
 }

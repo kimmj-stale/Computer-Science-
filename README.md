@@ -1,6 +1,6 @@
 # Computer-Science-
 
-### 전공 CS
+### CS
 
 ### 
   ![c](https://img.shields.io/badge/C-A8B9CC.svg?&style=for-the-badge&logo=c&logoColor=white)

@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 #include "calculate.hpp"
+
 int main() {
     int a , b;
     char s;
@@ -10,6 +11,7 @@ int main() {
     calculate cal(a , b);
     cout << "계산 방식을 선택하세요";
     cin >> s;
+    
     if (s == '+') {
         cout << cal.add() << '\n';
     }

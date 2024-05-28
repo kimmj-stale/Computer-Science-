@@ -237,10 +237,10 @@ int get_height(TreePointer root) {
 	/* ==================== FILL YOUR CODE ==================== */
 	if (root == NULL) return 0;
 
-	int depth_lf = get_height(root -> left_child);
-	int depth_rt = get_height(root -> right_child);
+	int depth_lf = get_height(root->left_child);
+	int depth_rt = get_height(root->right_child);
 
-	return MAX(depth_lf , depth_rt) + 1;
+	return (depth_lf > depth_rt ? depth_lf : depth_rt) + 1;
 	/* ================= YOUR CODE ENDS HERE ================== */
 }
 

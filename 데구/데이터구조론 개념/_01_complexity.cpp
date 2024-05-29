@@ -1,5 +1,5 @@
 /**
- * 01. Algorithm performance analysis
+ * 01. Algorithm Performance Analysis
  * 시간 복잡도에 따른 알고리즘의 성능을 평가한다.
  * 공간 복잡도에 따른 알고리즘의 용량 , 메모리 차지에 의한 알고리즘의 성능을 평가한다.
 */

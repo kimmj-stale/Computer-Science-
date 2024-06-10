@@ -15,8 +15,10 @@
 
 #if grade == 3:
 #    print(grade*10*price)
+
 #if grade == 2:
 #    print(grade*5*price)
+
 #if grade == 1:
 #    print('구매하실 수 없습니다.')
 
@@ -71,10 +73,12 @@
 #while i < 10:
 #    i = i + 1
 #    print('hello')
+
 #-----------------
 #i = 1
 #sum = 0
 #limit = int(input('어디까지 더할 것인지 구하시오: '))
+
 #while i <= limit:
 #    sum = sum + i
 #    i = i + 1

@@ -6,6 +6,7 @@
 /*ex
 #include <iostream>
 using namespace std;
+
 int main() {
     int a = 3;
     int *ptr;               ->          포인터로 받을 정수형 변수를 생성
@@ -19,6 +20,7 @@ int main() {
 /*ex2
 #include <iostream>
 using namespace std;
+
 int main() {
     int a = 3;
     char b = '!';
@@ -37,16 +39,15 @@ int main() {
 /**
  * 포인터로 배열 접근
  * 배열의 각 칸에도 메모리 할당값이 존재, 포인터로 이를 지칭할 수 있음
- * 
 */
 
 /*
 #include <iostream>
 using namespace std;
+
 int main() {
     int n[10]= {1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10};
     int *a = n;
-
     cout << *a << ' ' << a << '\n';     ->  별도로 지정하지 않는다면 n[0]을 나타냄
     cout << *n << ' ' << n << '\n';     ->  위와 동일한 지정값을 가짐
     cout << *(a + 5) << ' ' << a + 5 << '\n';   ->  n[0 + 5]를 나타냄
@@ -57,6 +58,7 @@ int main() {
 /*ex
 #include <iostream>
 using namespace std;
+
     bool equalArray(int* p, int* q, int size); // 함수의 원형 선언
         int main() {
         int a[] = {1,2,3,4,5};
@@ -64,6 +66,7 @@ using namespace std;
         if(equalArray(a, b, 5)) cout << "arrays equal" << "\n";
         else cout << "arrays not equal" << "\n";
     }
+    
     bool equalArray(int* p, int* q, int size) {
         int i;
     for(i=0; i<size; i++) {
@@ -71,6 +74,7 @@ using namespace std;
     p++; // p는 배열의 다음 원소를 가리킴
     q++; // q도 배열의 다음 원소를 가리킴
     }
+    
     return true;
 } 
 */

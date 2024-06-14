@@ -1,5 +1,5 @@
-/*
-basic C VS basic C++
+/**
+* basic C VS basic C++
 */
 
 /*

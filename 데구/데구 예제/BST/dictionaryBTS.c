@@ -2,13 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include "dictionaryBTS.h"
-// << ÀÌÁø Å½»ö Æ®¸® ¿¬»ê ¼öÇà : [¿¹Á¦ 7-4] Âü°í >>
-// Æ÷ÀÎÅÍ p°¡ °¡¸®Å°´Â ³ëµå¿Í ºñ±³ÇÏ¿© Ç×¸ñ key¸¦ »ğÀÔÇÏ´Â ¿¬»ê([¿¹Á¦ 7-4] Âü°í)
+// í¬ì¸í„° pê°€ ê°€ë¦¬í‚¤ëŠ” ë…¸ë“œì™€ ë¹„êµí•˜ì—¬ í•­ëª© keyë¥¼ ì‚½ì…í•˜ëŠ” ì—°ì‚°([ì˜ˆì œ 7-4] ì°¸ê³ )
 treeNode* insertKey(treeNode* p, element key) {
 	treeNode* newNode;
 	int compare;
 
-	// »ğÀÔÇÒ ÀÚ¸®¿¡ »õ ³ëµå¸¦ ±¸¼ºÇÏ¿© ¿¬°á
+	// ì‚½ì…í•  ìë¦¬ì— ìƒˆ ë…¸ë“œë¥¼ êµ¬ì„±í•˜ì—¬ ì—°ê²°
 	if (p == NULL) {
 		newNode = (treeNode*)malloc(sizeof(treeNode));
 		newNode->key = key;
@@ -17,13 +16,13 @@ treeNode* insertKey(treeNode* p, element key) {
 		return newNode;
 	}
 
-	// ÀÌÁø Æ®¸®¿¡¼­ »ğÀÔÇÒ ÀÚ¸® Å½»ö
+	// ì´ì§„ íŠ¸ë¦¬ì—ì„œ ì‚½ì…í•  ìë¦¬ íƒìƒ‰
 	else {
 		compare = strcmp(key.word, p->key.word);
 		if (compare < 0)      p->left = insertKey(p->left, key);
 		else if (compare > 0)  p->right = insertKey(p->right, key);
-		else  printf("\n ÀÌ¹Ì °°Àº ´Ü¾î°¡ ÀÖ½À´Ï´Ù! \n");
-		return p;  // »ğÀÔÇÑ ÀÚ¸® ¹İÈ¯
+		else  printf("\n ì´ë¯¸ ê°™ì€ ë‹¨ì–´ê°€ ìˆìŠµë‹ˆë‹¤! \n");
+		return p;  // ì‚½ì…í•œ ìë¦¬ ë°˜í™˜
 	}
 }
 
@@ -31,7 +30,7 @@ void insertWord(treeNode** root, element key) {
 	*root = insertKey(*root, key);
 }
 
-// root ³ëµåºÎÅÍ Å½»öÇÏ¿© key¿Í °°Àº ³ëµå¸¦ Ã£¾Æ »èÁ¦ÇÏ´Â ¿¬»ê
+// root ë…¸ë“œë¶€í„° íƒìƒ‰í•˜ì—¬ keyì™€ ê°™ì€ ë…¸ë“œë¥¼ ì°¾ì•„ ì‚­ì œí•˜ëŠ” ì—°ì‚°
 void deleteWord(treeNode* root, element key) {
 	treeNode* parent, * p, * succ, * succ_parent;
 	treeNode* child;
@@ -43,12 +42,12 @@ void deleteWord(treeNode* root, element key) {
 		if (strcmp(key.word, p->key.word) < 0)  p = p->left;
 		else  p = p->right;
 	}
-	// »èÁ¦ÇÒ ³ëµå°¡ ¾ø´Â °æ¿ì
+	// ì‚­ì œí•  ë…¸ë“œê°€ ì—†ëŠ” ê²½ìš°
 	if (p == NULL) {
-		printf("\n »èÁ¦ÇÒ ´Ü¾î°¡ »çÀü¿¡ ¾ø½À´Ï´Ù!!");
+		printf("\n ì‚­ì œí•  ë‹¨ì–´ê°€ ì‚¬ì „ì— ì—†ìŠµë‹ˆë‹¤!!");
 		return;
 	}
-	// »èÁ¦ÇÒ ³ëµå°¡ ´Ü¸» ³ëµåÀÎ °æ¿ì
+	// ì‚­ì œí•  ë…¸ë“œê°€ ë‹¨ë§ ë…¸ë“œì¸ ê²½ìš°
 	if ((p->left == NULL) && (p->right == NULL)) {
 		if (parent != NULL) {
 			if (parent->left == p) parent->left = NULL;
@@ -56,7 +55,7 @@ void deleteWord(treeNode* root, element key) {
 		}
 		else root = NULL;
 	}
-	// »èÁ¦ÇÒ ³ëµå°¡ ÀÚ½Ä ³ëµå¸¦ ÇÑ °³ °¡Áø °æ¿ì
+	// ì‚­ì œí•  ë…¸ë“œê°€ ìì‹ ë…¸ë“œë¥¼ í•œ ê°œ ê°€ì§„ ê²½ìš°
 	else if ((p->left == NULL) || (p->right == NULL)) {
 		if (p->left != NULL) child = p->left;
 		else  child = p->right;
@@ -67,7 +66,7 @@ void deleteWord(treeNode* root, element key) {
 		}
 		else root = child;
 	}
-	// »èÁ¦ÇÒ ³ëµå°¡ ÀÚ½Ä ³ëµå¸¦ µÎ °³ °¡Áø °æ¿ì
+	// ì‚­ì œí•  ë…¸ë“œê°€ ìì‹ ë…¸ë“œë¥¼ ë‘ ê°œ ê°€ì§„ ê²½ìš°
 	else {
 		succ_parent = p;
 		succ = p->right;
@@ -85,7 +84,7 @@ void deleteWord(treeNode* root, element key) {
 	free(p);
 }
 
-// ÀÌÁø Å½»ö Æ®¸®¿¡¼­ Å°°ªÀÌ keyÀÎ ³ëµå À§Ä¡¸¦ Å½»öÇÏ´Â ¿¬»ê
+// ì´ì§„ íƒìƒ‰ íŠ¸ë¦¬ì—ì„œ í‚¤ê°’ì´ keyì¸ ë…¸ë“œ ìœ„ì¹˜ë¥¼ íƒìƒ‰í•˜ëŠ” ì—°ì‚°
 treeNode* searchDic(treeNode* root, element key) {
 	treeNode* p;
 	int compare;
@@ -96,14 +95,14 @@ treeNode* searchDic(treeNode* root, element key) {
 		if (compare < 0)      p = p->left;
 		else if (compare > 0)  p = p->right;
 		else {
-			printf("\nÃ£Àº ´Ü¾î : %s", p->key.word);
+			printf("\nì°¾ì€ ë‹¨ì–´ : %s", p->key.word);
 			return p;
 		}
 	}
 	return p;
 }
 
-// ÀÌÁø Å½»ö Æ®¸®¸¦ ÁßÀ§ ¼øÈ¸ÇÏ¸é¼­ Ãâ·ÂÇÏ´Â ¿¬»ê
+// ì´ì§„ íƒìƒ‰ íŠ¸ë¦¬ë¥¼ ì¤‘ìœ„ ìˆœíšŒí•˜ë©´ì„œ ì¶œë ¥í•˜ëŠ” ì—°ì‚°
 void displayDic(treeNode* root) {
 	if (root) {
 		displayDic(root->left);
@@ -112,13 +111,13 @@ void displayDic(treeNode* root) {
 	}
 }
 
-// ¿µ¾î »çÀü ¸Ş´º
+// ì˜ì–´ ì‚¬ì „ ë©”ë‰´
 void menu() {
 	printf("\n*---------------------------*");
-	printf("\n\t1 : Ãâ·Â");
-	printf("\n\t2 : ÀÔ·Â");
-	printf("\n\t3 : »èÁ¦");
-	printf("\n\t4 : °Ë»ö");
-	printf("\n\t5 : Á¾·á");
+	printf("\n\t1 : ì¶œë ¥");
+	printf("\n\t2 : ì…ë ¥");
+	printf("\n\t3 : ì‚­ì œ");
+	printf("\n\t4 : ê²€ìƒ‰");
+	printf("\n\t5 : ì¢…ë£Œ");
 	printf("\n*---------------------------*\n  ");
 }

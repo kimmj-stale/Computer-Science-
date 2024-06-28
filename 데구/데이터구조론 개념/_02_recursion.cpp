@@ -1,9 +1,8 @@
 /**
- * 00. 함수 정의
  * 필요한 tactic의 함수를 별도로 미리 정할 수 있다.
 */
 
-/*
+/* 함수 선언 1
 #include <iostream>
 using namespace std;
 int absolute_number(int n){             ->          별도 함수를 지정
@@ -33,7 +32,7 @@ int main() {
  * stack overflow가 날 때 까지 반복
 */
 
-/*실습 - 일반적인 재귀함수
+/* 일반적인 재귀함수
 #include <iostream>
 using namespace std;
 void recursive(int n) {
@@ -95,8 +94,7 @@ int BSearchRecursive(int arr[], int first, int last, int target)
 }
 */
 
-/*
-// 이진 탐색 트리 !! 반복문으로 구현 !!
+/* 이진 탐색 트리 - 반복문으로 구현 
 int BSearchRecursive(int arr[], int first, int last, int target) {
     int low = first;
     int high = last;

@@ -16,8 +16,7 @@
 • void insertLast(linkedList* L, element x) : 리스트의 마지막 노드로 삽입
 • void insert(linkedList* L, listNode* pre, element x) : 리스트 L 중간에 x(data) 노드삽입 (pre: 삽입할 위치의 앞 노드)
 • int delete(linkedList* L, listNode* p) : 리스트에서 p 노드 삭제
-• listNode* searchNode(linkedList* L, element x) : data로 x가 저장되어 있는 노드를
-검색
+• listNode* searchNode(linkedList* L, element x) : data로 x가 저장되어 있는 노드를 검색
 • int getLength(linkedList* L) : 리스트의 길이(항목의 개수)를 구함
 • void displayList(linkedList* L) : 리스트의 모든 요소를 표시
 */
@@ -39,13 +38,12 @@ typedef struct {
 
 /*
 void insertion(linkedlist *L , listnode *pre , element x)
-
 element x를 삽입할 때,
 (head = x1의 주소값) - (x1) - (x2의 주소값) - (x2) - (x3의 주소값)- (x3) - (null)
-=>
+-->
 (head = x1의 주소값) - (x1) - (x2의 주소값) - (x2) - (x3의 주소값)- (x3) - (null)
                                     [(x)삽입]
-=>
+-->
 (head = x1의 주소값) - (x1) - [(x의 주소값) -(x)] - (x2의 주소값) - (x2) (x3의 주소값)- (x3) - (null)
 head에 넣는 경우 head 의 linkfield를 , last에 넣는 경우 마지막 값의 linkfield가 null인 점을 이용하면 빠르게 찾을 수 있다.
 */
@@ -62,7 +60,6 @@ void delete(linkedlist *L , listnode *p)
 
 /*
 listNode *search(linkedlist *L , element x)
-
 tmp = head값을 시작으로 하여 각 element값을 탐색 , 원하는 탐색값이 나온다면 탐색 종료
 */
 
@@ -88,16 +85,12 @@ typedef struct ListNode {
 }listNode;
 */
 
-/**
- * getlength 연산
-*/
-
 /*
 head 생성
 //공백 리스트 작성//
 linkedlist *initlist {
     linkedlist *L;
-    L = (linkedlist*)malloc(sizeof(linkedlist));
+    L = (linkedlist*)malloc(sizeof(linkedlist));    ->  메모리 공간 할당
     L -> head = NULL;       ->      head값을 비워둠
     L -> length = 0;        ->      head값이 비었으므로 길이 역시 0
     return L;
@@ -107,4 +100,3 @@ int getlength(linkedlist *L) {
     return L -> length;
 }
 */
-

@@ -91,12 +91,12 @@ int delete(linkedList* L, listNode* p){
 
 /*
 listNode* search(linkedList* L, element x){
-    listNode* temp = L->head;   >   node값을 하나씩 증가하면서 변동
-    while(temp != NULL) {       >   현재 지칭 주소값이 null(끝값)이 아닌 경우
-        if(temp->data == x)     >   현재 지칭 자료값이 특정 자료값 x인 경우 (data 값이 x 인 경우를 찾기)
+    listNode* temp = L->head;   //   node값을 하나씩 증가하면서 변동
+    while(temp != NULL) {       //   현재 지칭 주소값이 null(끝값)이 아닌 경우
+        if(temp->data == x)     //   현재 지칭 자료값이 특정 자료값 x인 경우 (data 값이 x 인 경우를 찾기)
             return temp;
         else
-            temp = temp->link;  >   temp의 data값이 x가 아닌 경우 다음을 지칭하여 넘어감
+            temp = temp->link;  //   temp의 data값이 x가 아닌 경우 다음을 지칭하여 넘어감
     }
     return temp;
 }
@@ -111,10 +111,10 @@ void displayList(linkedList* L) {
     listNode* p;
     printf(“L=(”);
     p = L->head;
-    while(p != NULL){               >   끝값에 도달한 경우 출력 종료
-        printf(“%d”, p->data);      >   list p의 모든 요소값을 지칭하기 위해 pointer 사용
+    while(p != NULL){               //   끝값에 도달한 경우 출력 종료
+        printf(“%d”, p->data);      //   list p의 모든 요소값을 지칭하기 위해 pointer 사용
         p = p->link;
-        if(p != NULL) printf(“,”);  >   끝값(NULL)이 아닌 경우 출력 유지(,) , NULL인 경우 (,) 출력 종료
+        if(p != NULL) printf(“,”);  //   끝값(NULL)이 아닌 경우 출력 유지(,) , NULL인 경우 (,) 출력 종료
     }
     printf(“)\n”);
 }

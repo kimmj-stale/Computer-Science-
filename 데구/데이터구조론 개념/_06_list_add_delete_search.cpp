@@ -24,7 +24,7 @@ void insert(linkedList* L, listNode* pre, element x){
 */
 
 /**
- * list append at first indx
+ * list append at first index
 */
 
 /*

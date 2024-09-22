@@ -22,26 +22,45 @@ AVLNode* insertAVLTree(AVLNode* node, int key) {
 	*/
 
 	/* ==================== FILL YOUR CODE ==================== */
-	// 노드가 NULL인 경우 새로운 노드 생성 (createNode 함수 사용)
+// 노드가 NULL인 경우 새로운 노드 생성
 	if (node == NULL) return createNode(key);
-	// if 삽입할 키 값이 현재 노드의 키 값보다 작은 경우 왼쪽 서브트리에 삽입 (재귀 호출)
-	// else if 삽입할 키 값이 현재 노드의 키 값보다 큰 경우 오른쪽 서브트리에 삽입 (재귀 호출)
-	// else 삽입할 키 값이 현재 노드의 키 값과 같은 경우 삽입 실패 메시지 출력
-	if (node->key > key) insertAVLTree(node->left, key);
-	else if (node->key < key) insertAVLTree(node->right, key);
-	else return "삽입 실패";
+
+	// 삽입할 키 값이 현재 노드의 키 값보다 작은 경우 왼쪽 서브트리에 삽입
+	if (key < node->key)
+		node->left = insertAVLTree(node->left, key);
+
+	// 삽입할 키 값이 현재 노드의 키 값보다 큰 경우 오른쪽 서브트리에 삽입
+	else if (key > node->key)
+		node->right = insertAVLTree(node->right, key);
+
+	// 삽입할 키 값이 현재 노드의 키 값과 같은 경우 삽입 실패 (중복 키)
+	else
+		return node;
+
 	// 노드의 balance factor 계산
-	int balance_F = getBalanceFactor(node);
-	// balanceFactor 값에 따른 LL/RR/LR/RL 회전 수행
-	if (balance_F > 1 && key < node->left->key) {
+	int balance = getBalanceFactor(node);
+
+	// LL 회전: 왼쪽에 삽입된 경우
+	if (balance > 1 && key < node->left->key)
 		return rotateLL(node);
-	} if (balance_F < -1 && key > node->right->key) {
+
+	// RR 회전: 오른쪽에 삽입된 경우
+	if (balance < -1 && key > node->right->key)
 		return rotateRR(node);
-	} if (balance_F > 1 && key > node->left->key) {
-		return rotateLR(node);
-	} if (balance_F < -1 && key < node->right->key) {
-		return rotateRL(node);
+
+	// LR 회전: 왼쪽-오른쪽에 삽입된 경우
+	if (balance > 1 && key > node->left->key) {
+		node->left = rotateRR(node->left);
+		return rotateLL(node);
 	}
+
+	// RL 회전: 오른쪽-왼쪽에 삽입된 경우
+	if (balance < -1 && key < node->right->key) {
+		node->right = rotateLL(node->right);
+		return rotateRR(node);
+	}
+
+	return node;
 	/* ================= YOUR CODE ENDS HERE ================== */
 
 	// 삽입된 노드 반환
@@ -63,13 +82,11 @@ AVLNode* rotateLL(AVLNode* pNode) {
 	*/
 
 	/* ==================== FILL YOUR CODE ==================== */
-	AVLNode* cNode = pNode->right;
-	AVLNode* cRNode = cNode->right;
+	AVLNode* cNode = pNode->left;
+	pNode->left = cNode->right;
+	cNode->right = pNode;
 
-	cNode->left = pNode;
-	pNode->right = cRNode;
-
-	return pNode;
+	return cNode;
 	/* ================= YOUR CODE ENDS HERE ================== */
 }
 
@@ -88,13 +105,11 @@ AVLNode* rotateRR(AVLNode* pNode) {
 	*/
 
 	/* ==================== FILL YOUR CODE ==================== */
-	AVLNode* cNode = pNode->left;
-	AVLNode* cLNode = cNode->left;
+	AVLNode* cNode = pNode->right;
+	pNode->right = cNode->left;
+	cNode->left = pNode;
 
-	cNode->right = pNode;
-	pNode->left = cLNode;
-
-	return pNode;
+	return cNode;
 	/* ================= YOUR CODE ENDS HERE ================== */
 }
 
@@ -113,14 +128,8 @@ AVLNode* rotateLR(AVLNode* pNode) {
 	*/
 
 	/* ==================== FILL YOUR CODE ==================== */
-	AVLNode* bNode = pNode->left;
-	AVLNode* cNode = bNode->right;
-
-	rotateRR(bNode);
-	pNode->left = cNode;
-	rotateLL(pNode);
-
-	return pNode;
+	pNode->left = rotateRR(pNode->left);
+	return rotateLL(pNode);
 	/* ================= YOUR CODE ENDS HERE ================== */
 }
 
@@ -139,14 +148,8 @@ AVLNode* rotateRL(AVLNode* pNode) {
 	*/
 
 	/* ==================== FILL YOUR CODE ==================== */
-	AVLNode* bNode = pNode->right;
-	AVLNode* cNode = bNode->left;
-
-	rotateLL(bNode);
-	pNode->right = cNode;
-	rotateRR(pNode);
-
-	return pNode;
+	pNode->right = rotateLL(pNode->right);
+	return rotateRR(pNode);
 	/* ================= YOUR CODE ENDS HERE ================== */
 }
 
@@ -167,7 +170,7 @@ int getBalanceFactor(AVLNode* node) {
 	*/
 
 	/* ==================== FILL YOUR CODE ==================== */
-	if (node->key == NULL) return 0;
+	if (node == NULL) return 0;
 	// 왼쪽 서브트리의 높이 - 오른쪽 서브트리의 높이 반환
 	return height(node->left) - height(node->right);
 	/* ================= YOUR CODE ENDS HERE ================== */
